@@ -1,0 +1,208 @@
+<div class="container-fluid">
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3 style="color: black;">{{orderCount}}</h3>
+
+          <p>New Orders</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a id="ordertrig" class="small-box-footer">View Order List &nbsp; <i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{buyerCount}}</h3>
+
+          <p>Buyer Count</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <a id="buyertrig" class="small-box-footer">Buyer info &nbsp;<i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{sellerCount}}</h3>
+
+          <p>Total Seller</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+        <a id="sellertrig" class="small-box-footer">More info &nbsp; <i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{propertyCount}}</h3>
+
+          <p>Property Registered</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a id="proptrig" class="small-box-footer">More info &nbsp;<i style="color: black;"
+            class=" ion-android-send"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+
+
+  <!-- Tables  Buyer-->
+  <div id="buyert" class="container buyer">
+    <button routerLink="/createbuyer" routerLinkActive="router-link-active" class="btn btn-success">Create
+      Buyer</button>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Aadhar</th>
+          <th scope="col">Action</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let buyer of buyerList">
+          <th scope="row">{{buyer.buyerId}}</th>
+          <td>{{buyer.fName}}</td>
+          <td>{{buyer.lName}}</td>
+          <td>{{buyer.phoneNumber}}</td>
+          <td>{{buyer.email}}</td>
+          <td>{{buyer.adhar}}</td>
+          <td><a routerLink='/editbuyer/{{buyer.buyerId}}' routerLinkActive="router-link-active"
+              class="btn btn-secondary">&nbsp; Edit &nbsp;</a></td>
+          <td><a (click)="deleteBuyer(buyer)" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tables  Seller-->
+  <div id="sellert" class="container seller">
+    <button routerLink="/admincreateseller" routerLinkActive="router-link-active" class="btn btn-success">Create
+      Seller</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Aadhar</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let seller of sellerList">
+          <th scope="row">{{seller.sellerId}}</th>
+          <td>{{seller.fName}}</td>
+          <td>{{seller.lName}}</td>
+          <td>{{seller.phoneNumber}}</td>
+          <td>{{seller.email}}</td>
+          <td>{{seller.adhar}}</td>
+          <td><a routerLink='/admineditseller/{{seller.sellerId}}' routerLinkActive="router-link-active"
+              class="btn btn-secondary">&nbsp; Edit &nbsp;</a></td>
+          <td> <button routerLink="/createpropertyadmin/{{seller.sellerId}}" routerLinkActive="router-link-active"
+              class="btn btn-success">Create Property</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tables  Property-->
+  <div id="propertyt" class="container property">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">property_Id</th>
+          <th scope="col">property_Type</th>
+          <th scope="col">price</th>
+          <th scope="col">status</th>
+          <th scope="col">contact</th>
+          <th scope="col">seller</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let property of propertyList">
+          <th scope="row">{{property.property_Id}}</th>
+          <td>{{property.property_Type}}</td>
+          <td>{{property.price}}</td>
+          <td>{{property.status}}</td>
+          <td>{{property.contact}}</td>
+          <td>{{property.seller.sellerId}}</td>
+          <td> <button routerLink="/updatepropertyadmin/{{property.property_Id}}" routerLinkActive="router-link-active"
+              class="btn btn-success"> Edit </button></td>
+          <td> <button (click)="deleteProperty(property.property_Id)" class="btn btn-danger"> Delete </button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="ordert" class="container order">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">purhcaseId</th>
+          <th scope="col">buyer</th>
+          <th scope="col">maxAcceptedPrice</th>
+          <th scope="col">date</th>
+          <th scope="col">property</th>
+          <th scope="col">sellerId</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderList">
+          <th scope="row">{{order.purhcaseId}}</th>
+          <td>{{order.buyer.buyerId}}</td>
+          <td>{{order.maxAcceptedPrice}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.property.property_Type}}</td>
+          <td>{{order.seller.sellerId}}</td>
+          <td> <button (click)="deleteOrder(order.purhcaseId)" class="btn btn-danger"> Delete </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

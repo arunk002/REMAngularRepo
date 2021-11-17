@@ -1,0 +1,27 @@
+<div align="center" style="background-color:#F4F5F2;">
+  &#160;&#160;&#160;
+  <div>
+  <a (click)="toAddprop()" type="button" class="btn btn-outline-success">Add Property</a>
+  </div>
+
+<div style="background-color:#F4F5F2;">
+  &#160;
+  <div class="container">
+    <div *ngFor="let property of propertyData " class="card sellcard">
+      <div class="imgbx">
+        <img class="img" src="../../assets/images/back.jpg" alt="Card image cap" align="left">
+        <br />
+
+        <div style="text-align: left;">
+          &nbsp;&nbsp;&nbsp;<div style="display: inline-block; text-align: left;">
+            <h3>Property for sell</h3>
+            <p>{{property.location}}</p>
+            <h3>{{property.price}}</h3>
+            <a  (click)="redirect(property.property_Id)" class="btn btn-primary">Edit</a>&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    &#160;
+  </div>
+</div>
