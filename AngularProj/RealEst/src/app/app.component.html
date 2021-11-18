@@ -49,9 +49,10 @@
             User
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li *ngFor="let attr of attributes"><a class="dropdown-item" (click)=optionSelected(attr.name) >{{attr.name}}</a></li>
+            <li *ngIf="isAdmin" ><a class="dropdown-item" (click)="optionSelected1('admin')" >Admin Panel</a></li>
+            <li *ngIf="isBuyer" ><a class="dropdown-item" (click)="optionSelected1('buyer')" >Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" (click)="goOut()">Log out</a></li>
+            <li *ngIf="isLogged"><a class="dropdown-item" (click)="goOut()">Log out</a></li>
           </ul>
         </li>
       </ul>

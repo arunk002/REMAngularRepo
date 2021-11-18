@@ -23,11 +23,7 @@ export class AppComponent {
     console.log("--------------------------------------");
     console.log(data);
   }
-  public attributes = [
-    {name:"Personale Info"},
-    {name:"Bank"},
-    {name:"Admin"},
-  ]
+
   constructor(public router : Router, private userlogin : UserloginService){}
   darkMode($val:String){
     if($val==this.mode1){
@@ -41,9 +37,14 @@ export class AppComponent {
       this.classValue="navbar navbar-expand-lg navbar-light";
     }
   }
-  optionSelected(value:String){
+  optionSelected1(value:String){
     if(value=="Admin"){
       this.router.navigate(['/adminmenu'])
+    }
+  }
+  optionSelected2(value:String){
+    if(value!="Admin"){
+      this.router.navigate(['/home'])
     }
   }
 
@@ -51,6 +52,26 @@ export class AppComponent {
 goOut(){
   this.userlogin.logout();
   
+}
+
+
+//get login info
+
+public authUser : any;
+isBuyer : boolean = false;
+isSeller : boolean = false;
+isAdmin : boolean = false;
+isLogged : boolean = false;
+
+
+ngOnInit(): void {
+ this.authUser = sessionStorage.getItem("authUser");
+ this.authUser = JSON.parse(this.authUser);
+ this.isBuyer = this.authUser.role == "buyer"
+ this.isSeller = this.authUser.role == "seller"
+ this.isAdmin = this.authUser.role == "admin"
+ this.isLogged = this.authUser != null;
+
 }
 
 }

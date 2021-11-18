@@ -154,7 +154,7 @@
         <div>
           <div class="mapper ">
             <agm-map class="card p-0" [latitude]="propertyData.latitude" [longitude]="propertyData.longitude"
-              (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
+              >
               <agm-marker [latitude]="propertyData.latitude" [longitude]="propertyData.longitude">
               </agm-marker>
             </agm-map>
@@ -190,7 +190,7 @@
       </article>
     </div>
 
-    <div class="col-md-4">
+    <div *ngIf="isBuyer" class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-secondary rounded">
           <h4 class="fst-italic">Add to cart</h4>

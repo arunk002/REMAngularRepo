@@ -70,7 +70,7 @@ createAccount(){
   }
   else if(this.set=="seller")
   {
-    this.buyerService.createSeller(this.accData).subscribe(data=> this.route.navigate(['/sellerlist'])  )
+    this.buyerService.createSeller(this.accData).subscribe(data=> this.route.navigate(['/login'])  )
   
   }
 }

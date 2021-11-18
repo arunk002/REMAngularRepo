@@ -15,6 +15,9 @@ export class PropertyComponent implements OnInit {
   constructor(private router : Router,private route: ActivatedRoute,private sellerService :CustomerService,private propertyService : PropertyService) { }
   value = this.route.snapshot.params['id'];
 
+  public authUser : any ;
+
+
   convert(val:any)
   {
     return parseInt(val);
@@ -29,6 +32,9 @@ export class PropertyComponent implements OnInit {
         this.sellerData = data;
       });
     });
+   this.authUser = sessionStorage.getItem("authUser");
+   this.authUser = JSON.parse(this.authUser);
+   this.isBuyer = this.authUser.role == "buyer"
   
 }
 addToCart(){
@@ -40,4 +46,9 @@ addMarker(latitude: number, longitude: number) {
   this.propertyData.latitude = latitude;
   this.propertyData.longitude = longitude;
 }
+
+public isBuyer : boolean = false;
+
+
+
 }

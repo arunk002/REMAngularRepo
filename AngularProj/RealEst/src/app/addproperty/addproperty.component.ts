@@ -51,7 +51,7 @@ export class AddpropertyComponent implements OnInit {
   }
 
   createProperty(){
-    this.propertyService.createProperty(this.propertyData).subscribe(data=> this.route.navigate(['/adminmenu']) )
+    this.propertyService.createProperty(this.propertyData).subscribe(data=> this.route.navigate(['/sellerlist']) )
   }
 
     

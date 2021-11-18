@@ -31,5 +31,8 @@ export class UserloginService {
     this.router.navigate(['/login']);
   }
 
+  loginAdmin(admin : any):Observable<IUser>{
+    return this.http.post<IUser>(this.restUrl+"/adminlogin", JSON.stringify(admin), this.httpOptions);
+  }
 
 }

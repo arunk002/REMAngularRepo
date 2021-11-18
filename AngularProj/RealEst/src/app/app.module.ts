@@ -37,6 +37,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
 import { AddpropertyComponent } from './addproperty/addproperty.component';
 import { AgmCoreModule } from '@agm/core';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -63,8 +67,12 @@ import { AgmCoreModule } from '@agm/core';
     SignupComponent,
     CartComponent,
     AddpropertyComponent,
+    AdminLoginComponent,
   ],
   imports: [
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
