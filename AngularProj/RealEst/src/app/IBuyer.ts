@@ -8,5 +8,8 @@ export interface IBuyer{
     pan : string;
     adhar : string;
     password : string;
+    address : string;
+    country : string;
+    zipcode : string
 
 }

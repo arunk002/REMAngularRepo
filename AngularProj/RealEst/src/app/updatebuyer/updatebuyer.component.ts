@@ -4,11 +4,12 @@ import { CustomerService } from '../customer.service';
 import { IBuyer } from '../IBuyer';
 
 @Component({
-  selector: 'app-editbuyer',
-  templateUrl: './editbuyer.component.html',
-  styleUrls: ['./editbuyer.component.css']
+  selector: 'app-updatebuyer',
+  templateUrl: './updatebuyer.component.html',
+  styleUrls: ['./updatebuyer.component.css']
 })
-export class EditbuyerComponent implements OnInit {
+export class UpdatebuyerComponent implements OnInit {
+
   buyerData : IBuyer = {
     customerId: 0,
     buyerId: 0,
@@ -32,7 +33,7 @@ export class EditbuyerComponent implements OnInit {
   }
 
   updateBuyer(){
-    this.buyerService.updateBuyer(this.buyerData).subscribe((data : {} )=> this.route.navigate(['/adminmenu']));
+    this.buyerService.updateBuyer(this.buyerData).subscribe((data : {} )=> this.route.navigate(['/profile/'+this.buyerData.buyerId]));
 
   }
 

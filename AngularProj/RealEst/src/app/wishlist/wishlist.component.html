@@ -15,9 +15,9 @@
             <div style="height: 20px; background-color: #f1f3f6;"></div>
             <div style="background-color: rgb(255, 255, 255); padding: 0; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;"
                 class="card m-0">
-                <li>Profile<i class="bi bi-person-fill"></i></li>
+                <li (click)="toProfile(buyerData.buyerId)">Profile<i class="bi bi-person-fill"></i></li>
                 <li>Cart<i class="bi bi-bag-check"></i></li>
-                <li (click)="toProfile()" >Edit Profile<i class="bi bi-house-door"></i></li>
+                <li (click)="toProfileEdit(buyerData.buyerId)" >Edit Profile<i class="bi bi-house-door"></i></li>
                 <li>My Orders<i class="bi bi-cart4"></i></li>
                 <li style="background-color: black; color: white;">wishList<i class="bi bi-heart"></i></li>
 

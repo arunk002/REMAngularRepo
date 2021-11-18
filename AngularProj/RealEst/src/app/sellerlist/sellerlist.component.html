@@ -14,10 +14,15 @@
 
         <div style="text-align: left;">
           &nbsp;&nbsp;&nbsp;<div style="display: inline-block; text-align: left;">
-            <h3>Property for sell</h3>
+            <!-- <h3>Property for sell</h3>
             <p>{{property.location}}</p>
             <h3>{{property.price}}</h3>
-            <a  (click)="redirect(property.property_Id)" class="btn btn-primary">Edit</a>&nbsp;
+            <a  (click)="redirect(property.property_Id)" class="btn btn-primary">Edit</a>&nbsp; -->
+            <h3>Property for sell</h3>
+              <p class="c">{{property.location}} <span style="word-spacing: 1cm;"><img style="margin-right: 5px;" src="https://img.icons8.com/material-rounded/20/000000/bed.png"/>{{propertyData.bhk}}BHK'S</span></p>
+              <h3 class="d">{{property.price}}<span><img src="https://img.icons8.com/ios-glyphs/20/000000/building--v1.png"/>{{propertyData.floor}}FLOOR'S</span></h3>
+              <a  (click)="redirect(property.property_Id)" class="btn btn-outline-success">Edit</a>&nbsp;&nbsp;
+              <a (click)="Delete(property.property_Id)"type="button" class="btn btn-outline-danger">Delete</a>
           </div>
         </div>
       </div>

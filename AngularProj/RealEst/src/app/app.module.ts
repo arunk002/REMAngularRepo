@@ -31,7 +31,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
@@ -41,6 +40,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+
+import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { UpdatebuyerComponent } from './updatebuyer/updatebuyer.component';
 
 @NgModule({
   declarations: [
@@ -63,11 +67,13 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AdminCreatesellerComponent,
     SellerlistComponent,
     EditComponent,
-    LoginComponent,
     SignupComponent,
     CartComponent,
     AddpropertyComponent,
     AdminLoginComponent,
+    ProfileComponent,
+    LoginpageComponent,
+    UpdatebuyerComponent,
   ],
   imports: [
     Ng2SearchPipeModule,
@@ -85,6 +91,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     MatSnackBarModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    GooglePayButtonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA5hxPaX_6yYlTy_7tsQFVeqsGiCmoZwYU'
     })

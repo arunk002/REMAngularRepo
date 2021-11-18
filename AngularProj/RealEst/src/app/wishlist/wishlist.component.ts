@@ -29,7 +29,10 @@ export class WishlistComponent implements OnInit {
     this.propertyService.deleteWishList(property_Id, this.sid).subscribe(data=>{this.propertyData = data})
   }
 
-  toProfile(){
-    this.route.navigate(['/profile']);
+  toProfile(buyerId : number){
+    this.route.navigate(['/profile/'+buyerId]);
+  }
+  toProfileEdit(buyerId : number){
+    this.route.navigate(['editbuyer/'+buyerId]);
   }
 }

@@ -6,11 +6,11 @@ import { UserloginService } from '../userlogin.service';
 enum CheckBoxType { BUYER, SELLER, NONE };
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-loginpage',
+  templateUrl: './loginpage.component.html',
+  styleUrls: ['./loginpage.component.css']
 })
-export class HomeComponent implements OnInit {
+export class LoginpageComponent implements OnInit {
   msg!: string;
 
   check_box_type = CheckBoxType;
@@ -26,22 +26,23 @@ export class HomeComponent implements OnInit {
 
     this.currentlyChecked = targetType;
   }
-  constructor(private userLogin: UserloginService, private buyerService: CustomerService, private route: Router) { }
-  public authUser : any;
-  public isNotLogged : boolean = false;
 
-  ngOnInit(): void {
-    this.authUser = sessionStorage.getItem("authUser");
-    this.authUser = JSON.parse(this.authUser);
-    this.isNotLogged = this.authUser == null;
-  }
+  constructor(private userLogin: UserloginService, private buyerService: CustomerService, private route: Router) { }
+
   public user = {
     email: '',
     password: '',
     user: '',
   };
- 
+  authUser: IUser = {
+    id: 0,
+    email: '',
+    password: '',
+    user: ''
+  };
 
+  ngOnInit(): void {
+  }
   public set!: string;
   typeOfUser(val: string) {
     if (val == "seller") {
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit {
           this.authUser = data;
           sessionStorage.setItem('authUser', JSON.stringify(data));
           console.log(this.authUser)
-          this.route.navigate(['/profile/'+this.authUser.id])
+          this.route.navigate(['/home'])
         },
           error => {
             this.msg = "Bad credentials, Enter Valid mail and password"
@@ -85,9 +86,4 @@ export class HomeComponent implements OnInit {
         });
     }
   }
-
-
 }
-
-
-

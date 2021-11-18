@@ -38,4 +38,8 @@ export class SellerlistComponent implements OnInit {
 
   }
 
+  Delete(property_Id: number){
+    this.propertyService.deleteProperty(property_Id).subscribe();
+  }
+
 }

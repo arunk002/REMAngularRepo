@@ -25,15 +25,9 @@
             >Home</a
           >
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            routerLink="/aboutus"
-            routerLinkActive="active"
-            >About US</a
-          >
-        </li>
+        <li class="nav-item" *ngIf="isBuyer" ><a class="nav-link active" routerLink="/wishlist"
+          routerLinkActive="active" >WishList</a></li>
+
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -50,8 +44,10 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li *ngIf="isAdmin" ><a class="dropdown-item" (click)="optionSelected1('admin')" >Admin Panel</a></li>
-            <li *ngIf="isBuyer" ><a class="dropdown-item" (click)="optionSelected1('buyer')" >Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li *ngIf="isBuyer" ><a class="dropdown-item" (click)="optionSelected2('buyer')" >Profile</a></li>
+            <li *ngIf="isSeller" ><a class="dropdown-item" (click)="optionSelected3('seller')" >My Property</a></li>
+            <li *ngIf="!isLogged" ><a class="dropdown-item" (click)="optionSelected3('seller')" >Sign in</a></li>
+            <li *ngIf="isLogged"><hr class="dropdown-divider"></li>
             <li *ngIf="isLogged"><a class="dropdown-item" (click)="goOut()">Log out</a></li>
           </ul>
         </li>

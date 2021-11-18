@@ -20,11 +20,13 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { SellerlistComponent } from './sellerlist/sellerlist.component';
 import { EditComponent } from './edit/edit.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { LoginComponent } from './pages/login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { AddpropertyComponent } from './addproperty/addproperty.component';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { UpdatebuyerComponent } from './updatebuyer/updatebuyer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -46,11 +48,17 @@ const routes: Routes = [
     path: 'adminmenu',
     component: AdminmenuComponent,
     canActivate: [AdminGuardGuard],
-    data: { Role: ['admin'] },
+    data: { Role: 'admin' },
   },
   {
     path: 'editbuyer/:buyer',
     component: EditbuyerComponent,
+    canActivate: [AdminGuardGuard],
+    data: { Role: ['admin'] },
+  },
+  {
+    path: 'updatebuyer/:buyer',
+    component: UpdatebuyerComponent,
     canActivate: [AdminGuardGuard],
     data: { Role: ['buyer'] },
   },
@@ -98,7 +106,7 @@ const routes: Routes = [
     data: { Role: ['seller'] },
   },
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginpageComponent, pathMatch: 'full' },
   {
     path: 'addproperty',
     component: AddpropertyComponent,
@@ -106,6 +114,8 @@ const routes: Routes = [
     data: { Role: ['seller'] },
   },
   { path: 'adminlogin', component: AdminLoginComponent },
+  { path: 'profile/:userid', component: ProfileComponent },
+  
 ];
 
 @NgModule({
