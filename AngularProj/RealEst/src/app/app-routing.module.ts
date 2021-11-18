@@ -23,45 +23,33 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { AddpropertyComponent } from './addproperty/addproperty.component';
+import { AdminGuardGuard } from './admin-guard.guard';
 
 
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
-  {path:'cart',component:CartComponent},
+  {path:'cart',component:CartComponent, canActivate : [AdminGuardGuard], data:{Role: ['buyer'],}},
   {path:'customer',component:CustomerRedirectComponent},
   {path:'customer/Buyer',component:BuyerComponent},
   {path:'customer/Seller',component:SellerComponent},
   {path:'list',component:PropertyListingComponent},
   {path:'list/:id',component:PropertyComponent},
   { path: 'contactus', component: ContactusComponent },
-  { path: 'adminmenu', component: AdminmenuComponent },
-  { path: 'editbuyer/:buyer', component: EditbuyerComponent },
+  { path: 'adminmenu', component: AdminmenuComponent, canActivate : [AdminGuardGuard], data:{Role: ['admin'],} },
+  { path: 'editbuyer/:buyer', component: EditbuyerComponent, canActivate : [AdminGuardGuard], data:{Role: ['buyer'],} },
   { path: 'createbuyer', component: CreatebuyerComponent },
-  { path: 'wishlist', component: WishlistComponent },
-  { path: 'createpropertyadmin/:sellerid', component: AdminCreatepropertyComponent },
-  { path: 'updatepropertyadmin/:propertyid', component: AdminEditpropertyComponent },
-  { path: 'admincreateseller' , component: AdminCreatesellerComponent },
-  { path: 'admineditseller/:sellerid' , component: AdminEditsellerComponent },
-  {path:'sellerlist',component:SellerlistComponent},
-  {path:'edit/:id',component:EditComponent},
-  {
-    path: 'signup',
-    component: SignupComponent,
-    pathMatch: 'full',
-  
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    pathMatch: 'full',
-  
-  },
-  {
-    path: 'addproperty',
-    component: AddpropertyComponent,
-  
-  }
+  { path: 'wishlist', component: WishlistComponent , canActivate : [AdminGuardGuard], data:{Role: ['buyer'],}},
+  { path: 'createpropertyadmin/:sellerid', component: AdminCreatepropertyComponent , canActivate : [AdminGuardGuard], data:{Role: ['admin'],} },
+  { path: 'updatepropertyadmin/:propertyid', component: AdminEditpropertyComponent , canActivate : [AdminGuardGuard], data:{Role: ['admin'],} },
+  { path: 'admincreateseller' , component: AdminCreatesellerComponent , canActivate : [AdminGuardGuard], data:{Role: ['admin'],}},
+  { path: 'admineditseller/:sellerid' , component: AdminEditsellerComponent , canActivate : [AdminGuardGuard], data:{Role: ['admin'],} },
+  {path:'sellerlist',component:SellerlistComponent, canActivate : [AdminGuardGuard], data:{Role: ['seller'],}},
+  {path:'edit/:id',component:EditComponent, canActivate : [AdminGuardGuard], data:{Role: ['seller'],}},
+  { path: 'signup', component: SignupComponent,  pathMatch: 'full' },
+  { path: 'login',  component: LoginComponent,   pathMatch: 'full' },
+  { path: 'addproperty', component: AddpropertyComponent, canActivate : [AdminGuardGuard], data:{Role: ['seller'],} },
+  { path: '', redirectTo: '/login',   pathMatch: 'full' }
   
 ];
 
