@@ -14,10 +14,10 @@ import { PurchaseOrderService } from '../purchase-order.service';
   styleUrls: ['./adminmenu.component.css']
 })
 export class AdminmenuComponent implements OnInit {
-  public sellerList : any = [];
-  public buyerList : any = [];
-  public propertyList : any = [];
-  public orderList : any= []
+  public sellerList : any[] = [];
+  public buyerList : any[] = [];
+  public propertyList : any[] = [];
+  public orderList : any[] = []
   buyerCount : any = 0 ;
   sellerCount : any = 0 ;
   propertyCount : any = 0 ;
@@ -101,6 +101,7 @@ export class AdminmenuComponent implements OnInit {
    if (window.confirm('Are your sure, you want to delete?')){
       
       this.propertyService.deleteProperty(propertyId).subscribe(data=> {
+        this.ngOnInit();
         this.route.navigate(['adminmenu'])
       });
     }
@@ -114,6 +115,56 @@ export class AdminmenuComponent implements OnInit {
        });
      }
    }
+   
+   public property_Type : any;
+   
+   search(){     
+     if(this.property_Type == ""){
+       this.ngOnInit();
+     }else{
+       this.propertyList = this.propertyList.filter( res => {
+          return res.property_Type.toLocaleLowerCase().match(this.property_Type.toLocaleLowerCase())
+       })
+     }
+   }
+
+   key: string = "property_Id";
+   reverse : boolean = false;
+   sort(key:string){
+     this.key = key;
+     this.reverse = !this.reverse;
+   }
+
+   public fName : any;
+   searchSeller(){     
+    if(this.fName == ""){
+      this.ngOnInit();
+    }else{
+      this.sellerList = this.sellerList.filter( res => {
+         return res.fName.toLocaleLowerCase().match(this.fName.toLocaleLowerCase())
+      })
+    }
+  }
+
+   searchBuyer(){     
+    if(this.fName == ""){
+      this.ngOnInit();
+    }else{
+      this.buyerList = this.buyerList.filter( res => {
+         return res.fName.toLocaleLowerCase().match(this.fName.toLocaleLowerCase())
+      })
+    }
+  }
+
+  searchOrder(){     
+    if(this.property_Type == ""){
+      this.ngOnInit();
+    }else{
+      this.orderList = this.orderList.filter( res => {
+         return res.property_Type.toLocaleLowerCase().match(this.property_Type.toLocaleLowerCase())
+      })
+    }
+  }
 
 
 }

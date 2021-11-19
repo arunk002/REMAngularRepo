@@ -13,6 +13,7 @@ export class PropertyComponent implements OnInit {
   public propertyData : any = [];
   public sellerData : any = [];
   constructor(private router : Router,private route: ActivatedRoute,private sellerService :CustomerService,private propertyService : PropertyService) { }
+ 
   value = this.route.snapshot.params['id'];
 
   public authUser : any ;
@@ -34,11 +35,11 @@ export class PropertyComponent implements OnInit {
     });
    this.authUser = sessionStorage.getItem("authUser");
    this.authUser = JSON.parse(this.authUser);
-   this.isBuyer = this.authUser.role == "buyer"
+   this.isBuyer = this.authUser.user == "buyer"
   
 }
 addToCart(){
-  this.router.navigate(['/cart',this.propertyData]);
+  this.router.navigate(['/cart/',this.propertyData.property_Id]);
 }
 
 addMarker(latitude: number, longitude: number) {

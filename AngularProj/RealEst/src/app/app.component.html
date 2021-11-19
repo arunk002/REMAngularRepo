@@ -2,7 +2,7 @@
 <nav [style.background-color]="colorVal==1?'#1976D2' :'black'" class={{classValue}}>
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/home"
-    routerLinkActive="active"><strong>&lcub;REM&rcub;</strong></a>
+    routerLinkActive="active"><strong>REMS&reg;</strong></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -26,10 +26,10 @@
           >
         </li>
         <li class="nav-item" *ngIf="isBuyer" ><a class="nav-link active" routerLink="/wishlist"
-          routerLinkActive="active" >WishList</a></li>
+          routerLinkActive="active" >DashBoard</a></li>
 
         <li class="nav-item">
-          <a
+          <a *ngIf="!isAdmin"
             class="nav-link active"
             aria-current="page"
             routerLink="/contactus"
@@ -46,7 +46,7 @@
             <li *ngIf="isAdmin" ><a class="dropdown-item" (click)="optionSelected1('admin')" >Admin Panel</a></li>
             <li *ngIf="isBuyer" ><a class="dropdown-item" (click)="optionSelected2('buyer')" >Profile</a></li>
             <li *ngIf="isSeller" ><a class="dropdown-item" (click)="optionSelected3('seller')" >My Property</a></li>
-            <li *ngIf="!isLogged" ><a class="dropdown-item" (click)="optionSelected3('seller')" >Sign in</a></li>
+            <li *ngIf="!isLogged" ><a class="dropdown-item" (click)="optionSelected4()" >Sign in</a></li>
             <li *ngIf="isLogged"><hr class="dropdown-divider"></li>
             <li *ngIf="isLogged"><a class="dropdown-item" (click)="goOut()">Log out</a></li>
           </ul>

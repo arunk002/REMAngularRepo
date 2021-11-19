@@ -5,8 +5,8 @@ export interface IpurchaseOrder{
     buyer : number;
     maxAcceptedPrice : number;
     date : string;
-    property : string;
-    sellerId : number;
+    property : number;
+    seller : number;
     
     
 }

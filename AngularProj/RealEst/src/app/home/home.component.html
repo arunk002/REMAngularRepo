@@ -80,10 +80,10 @@
   
           <div class="container">
             <div class="carousel-caption text-start">
-              <h1>“Buying real estate is not only the best way, the quickest way, the safest way,
+              <h1 id="hei">“Buying real estate is not only the best way, the quickest way, the safest way,
                 but the only way to become wealthy.”</h1>
               <p></p>
-              <p><a class="btn btn-lg btn-primary" routerLink="/signup" routerLinkActive="active">Sign up today</a></p>
+              <p *ngIf="isNotLogged" ><a class="btn btn-lg btn-primary" routerLink="/signup" routerLinkActive="active">Sign up today</a></p>
             </div>
           </div>
         </div>
@@ -93,9 +93,9 @@
   
           <div class="container">
             <div class="carousel-caption">
-              <h1>We are here to help!</h1>
-              <p>There is alwas a better answer</p>
-             <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+              <h1 id="hei">We are here to help!</h1>
+              <p id="hei">There is alwas a better answer</p>
+             <p><a class="btn btn-lg btn-primary" href="contactus">Email us</a></p>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
   
           <div class="container">
             <div class="carousel-caption text-end">
-              <h1>Take a peak into your stable future</h1>
+              <h1 id="hei">Take a peak into your stable future</h1>
               <p><a class="btn btn-lg btn-primary" routerLink="/list"
                 routerLinkActive="active">View Property</a></p>
             </div>
@@ -123,16 +123,16 @@
     </div>
 
 
-    <div class="row align-items-md-stretch">
-      <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div  class="row align-items-md-stretch">
+      <div class="container col-xl-10 col-xxl-8 px-3 py-0">
           <div class="row align-items-center g-lg-5 py-5">
               <div class="col-lg-7 text-center text-lg-start">
-                  <h1 *ngIf="isNotLogged"  class="display-4 fw-bold lh-1 mb-3">Login here.</h1>
-                  <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form
-                      controls. Each required form group has a validation state that can be triggered by
-                      attempting to submit the form without completing it.</p>
+                  <h1 *ngIf="isNotLogged"  class="display-4 fw-bold lh-1 mb-2">Login here.</h1>
+                  <p class="col-lg-10 fs-4">We Provide Real Estate Agent Service in The Following Areas of Houston, TX:
+                    Pearland, Clear Lake Area, Baybrook, Pasadena, Heights, Eado, Friendswood, League City, Manvel, La Porte,
+                     Seabrook, Kemah, Willowbrook, The Woodlands, Katy, Sugar Land,</p>
               </div>
-              <div *ngIf="isNotLogged" class="col-md-10 mx-auto col-lg-5">
+              <div  class="col-md-10 mx-auto col-lg-5">
                   <!-- <form class="p-4 p-md-5 border rounded-3 bg-light">
                       <div class="form-floating mb-3">
                           <input type="email" class="form-control" id="floatingInput"
@@ -154,8 +154,7 @@
                       <small class="text-muted">By clicking Remember me, you agree to the terms of use.</small>
                   </form> -->
                   <div *ngIf="!isNotLogged">
-                    hello
-                    <img style="width: 100px; height: 100px;" src="../../assets/1.jpg" alt="">
+                    <img style="width: 500px; height: 500px;" src="../../assets/images/13.jpg" alt="">
                   </div>
                   <main *ngIf="isNotLogged" class="form-signin">
                     <div class="py-5 text-center">

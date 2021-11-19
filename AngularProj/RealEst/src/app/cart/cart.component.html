@@ -17,38 +17,38 @@
         <ul class="list-group mb-3">
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
+              <h4 class="my-0">{{propertyData.property_Type | uppercase}}</h4>
+              <small class="text-muted">{{propertyData.place}}</small>
             </div>
-            <span class="text-muted"> &#8377;12</span>
+            <span class="text-muted"> &#8377;{{propertyData.price}}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Promo code</h6>
               <small>EXAMPLECODE</small>
             </div>
-            <span class="text-success">− &#8377;5</span>
+            <span class="text-success">− &#8377;0</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (INR)</span>
-            <strong> &#8377;20</strong>
+            <strong> &#8377;{{propertyData.price}}</strong>
           </li>
         </ul>
 
-        <form class="card p-2">
+        <!-- <div class="card p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Promo code">
             <button type="submit" class="btn btn-secondary">Redeem</button>
           </div>
-        </form>
+        </div> -->
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate>
+        <div class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="firstName" placeholder="" [(ngModel)]="buyerData.fName" disabled required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -56,7 +56,7 @@
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" disabled [(ngModel)]="buyerData.lName" required>
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
@@ -66,7 +66,7 @@
 
             <div class="col-12">
               <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <input type="email" class="form-control" id="email" [(ngModel)]="buyerData.email"   disabled >
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
@@ -74,7 +74,7 @@
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <input type="text" class="form-control" disabled [(ngModel)]="buyerData.address" id="address" placeholder="1234 Main St" required>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
@@ -83,9 +83,8 @@
             
             <div class="col-md-5">
               <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>Karnataka</option>
+              <select class="form-select" disabled id="country" required>
+                <option value="">{{buyerData.country}}</option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid country.
@@ -94,8 +93,7 @@
 
             <div class="col-md-4">
               <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required>
-                <option value="">Choose...</option>
+              <select disabled class="form-select" id="state" required>
                 <option>Bangalore</option>
               </select>
               <div class="invalid-feedback">
@@ -105,7 +103,7 @@
 
             <div class="col-md-3">
               <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
+              <input type="text" class="form-control" id="zip" placeholder="" disabled [(ngModel)]="buyerData.zipcode" required>
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -113,20 +111,16 @@
           </div>
 
           <hr class="my-4">
-
-          
-
-
-          <hr class="my-4">
-          <h1>{{ title }}</h1>
-          <hr />
+        
           
           <google-pay-button  environment="TEST" buttonType="buy" buttonColor="black" [paymentRequest]="paymentRequest"
             (loadpaymentdata)="onLoadPaymentData($event)" (error)="onError($event)"
             [paymentAuthorizedCallback]="onPaymentDataAuthorized">
           </google-pay-button>
+          <br>
+          <button (click)="createOrder()" class="btn btn-form btn-success">Place Order</button>
         
-        </form>
+        </div>
       </div>
     </div>
   </main>

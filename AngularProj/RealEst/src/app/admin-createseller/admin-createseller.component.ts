@@ -24,9 +24,24 @@ export class AdminCreatesellerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+errmsg : any;
   createSeller(){
-    this.sellerService.createSeller(this.sellerData).subscribe(data=> this.route.navigate(['/adminmenu'])  )
+    if(this.sellerData.password == null || this.sellerData.password == ""){
+      this.errmsg = "password is required"
+    }
+    if(this.sellerData.email == null || this.sellerData.email == ""){
+      this.errmsg = "Email is required"
+    }
+    if(this.sellerData.lName == null || this.sellerData.lName == ""){
+      this.errmsg = "Last Name is required"
+    }
+    if(this.sellerData.fName == null || this.sellerData.fName == ""){
+      this.errmsg = "first Name is required"
+    }
+    
+    this.sellerService.createSeller(this.sellerData).subscribe(data=> this.route.navigate(['/adminmenu']),
+    error=> this.errmsg = "Email Id is already Registered" 
+    );
   }
 
 }

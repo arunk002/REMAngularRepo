@@ -10,7 +10,7 @@ import { PropertyService } from '../property.service';
 })
 export class EditComponent implements OnInit {
 
-  propertyData: any = {
+  public propertyData: any = {
     property_Id: 0,
     property_Type: '',
     price: 0,
@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
 
   propertyId: any = this.aroute.snapshot.params['id'];
 
-  sellerData: any = {
+  public sellerData: any = {
     customerId: 0,
     sellerId: 0,
     fName: '',
@@ -53,6 +53,7 @@ export class EditComponent implements OnInit {
           this.sellerData = data;
         });
       });
+
     
   }
 

@@ -29,11 +29,11 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { UpdatebuyerComponent } from './updatebuyer/updatebuyer.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'home', component: HomeComponent },
   {
-    path: 'cart',
+    path: 'cart/:propertyid',
     component: CartComponent,
     canActivate: [AdminGuardGuard],
     data: { Role: ['buyer'] },
@@ -41,7 +41,8 @@ const routes: Routes = [
   { path: 'customer', component: CustomerRedirectComponent },
   { path: 'customer/Buyer', component: BuyerComponent },
   { path: 'customer/Seller', component: SellerComponent },
-  { path: 'list', component: PropertyListingComponent },
+  { path: 'list', component: PropertyListingComponent,canActivate: [AdminGuardGuard],
+  data: { Role: 'buyer' || 'seller' } },
   { path: 'list/:id', component: PropertyComponent },
   { path: 'contactus', component: ContactusComponent },
   {
@@ -114,7 +115,9 @@ const routes: Routes = [
     data: { Role: ['seller'] },
   },
   { path: 'adminlogin', component: AdminLoginComponent },
-  { path: 'profile/:userid', component: ProfileComponent },
+  { path: 'profile/:userid', component: ProfileComponent ,
+  canActivate: [AdminGuardGuard],
+  data: { Role: 'buyer' },},
   
 ];
 

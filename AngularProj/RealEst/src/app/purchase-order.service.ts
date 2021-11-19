@@ -17,8 +17,8 @@ export class PurchaseOrderService {
 
   constructor(private http : HttpClient) { }
 
-  createOrder(order:any):Observable<IpurchaseOrder>{
-    return this.http.post<IpurchaseOrder>(this.restUrl+"/createpurchaseOrder", JSON.stringify(order),this.httpOptions );
+  createOrder(pid:number, bid:number){
+    return this.http.get<IpurchaseOrder>(this.restUrl+"/createpurchaseOrder/"+pid+"/"+bid);
   }
 
   deleteOrder(pid:any){
@@ -32,4 +32,11 @@ export class PurchaseOrderService {
   getOrderList():Observable<IpurchaseOrder[]>{
     return this.http.get<IpurchaseOrder[]>(this.restUrl+"/getpurchaseOrder")
   }
+
+  getOrderByBuyerId(buyerId : number):Observable<IpurchaseOrder[]>{
+    return this.http.get<IpurchaseOrder[]>(this.restUrl+"/orderbybuyerid/"+buyerId)
+  }
+
+
+
 }

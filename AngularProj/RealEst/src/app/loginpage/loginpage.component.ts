@@ -42,6 +42,7 @@ export class LoginpageComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
   }
   public set!: string;
   typeOfUser(val: string) {
@@ -53,8 +54,15 @@ export class LoginpageComponent implements OnInit {
     }
   }
   createAccount() {
+    if(this.user.email == "" || this.user.password == ""){      
+      this.msg = "please Enter your details"
+      throw new Error("please Enter your details");
+    }
+    if(this.set == null || this.set == ""){
+      this.msg = "please Select your Role"
+      throw new Error("please Enter your details");
+    }
     console.log(this.user);
-    console.log(this.authUser);
     if (this.set == "buyer") {
       this.userLogin
         .loginBuyer(this.user)
@@ -67,6 +75,7 @@ export class LoginpageComponent implements OnInit {
           error => {
             this.msg = "Bad credentials, Enter Valid mail and password"
             console.log("Exception occured");
+            this.ngOnInit();
 
           });
 
@@ -78,7 +87,7 @@ export class LoginpageComponent implements OnInit {
           this.authUser = data;
           sessionStorage.setItem('authUser', JSON.stringify(data));
           console.log(this.authUser)
-          this.route.navigate(['/sellerlist/',this.authUser.id])
+          this.route.navigate(['/sellerlist/'])
         }, error => {
           this.msg = "Bad credentials, Enter Valid mail and password"
           console.log("Exception occured");

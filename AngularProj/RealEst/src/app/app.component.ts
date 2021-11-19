@@ -54,6 +54,10 @@ export class AppComponent {
     }
   }
 
+  optionSelected4() {
+    this.router.navigate(['/login'])
+  }
+
   //LOGOUT
   goOut() {
     this.userlogin.logout();
@@ -70,9 +74,11 @@ export class AppComponent {
   ngOnInit(): void {
     this.authUser = sessionStorage.getItem('authUser');
     this.authUser = JSON.parse(this.authUser);
-    this.isBuyer = (this.authUser.user == 'buyer')|| (this.authUser != null); 
-    this.isSeller = this.authUser.user == 'seller';
-    this.isAdmin = this.authUser.user == 'admin';
     this.isLogged = this.authUser != null;
+    if(this.authUser != null){
+      this.isBuyer = (this.authUser.user == 'buyer')|| (this.authUser != null); 
+      this.isSeller = this.authUser.user == 'seller';
+      this.isAdmin = this.authUser.user == 'admin';
+    }
   }
 }

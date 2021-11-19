@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   public isNotLogged : boolean = false;
 
   ngOnInit(): void {
+
     this.authUser = sessionStorage.getItem("authUser");
     this.authUser = JSON.parse(this.authUser);
     this.isNotLogged = this.authUser == null;
@@ -52,8 +53,16 @@ export class HomeComponent implements OnInit {
     }
   }
   createAccount() {
+    if(this.user.email == "" || this.user.password == ""){      
+      this.msg = "please Enter your details"
+      throw new Error("please Enter your details");
+    }
+    if(this.set == null || this.set == ""){
+      this.msg = "please Select your Role"
+      throw new Error("please Enter your details");
+    }
+    
     console.log(this.user);
-    console.log(this.authUser);
     if (this.set == "buyer") {
       this.userLogin
         .loginBuyer(this.user)

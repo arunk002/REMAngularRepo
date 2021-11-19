@@ -18,16 +18,23 @@ export class AdminGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
+    var role;
     var authUser : any = sessionStorage.getItem('authUser');
     authUser = JSON.parse(authUser);
-    var role : string = authUser.user;
+    if(authUser == null){
+      role=""      
+    }else{
+      role  = authUser.user;
+
+    }
+ 
     console.log(role);
     console.log(route.data['Role']);
     
     
     const isAuthorized =   role.includes(route.data['Role']);
     if(!isAuthorized){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     }else{
       return true;
     }

@@ -28,7 +28,6 @@ export class SignupComponent implements OnInit {
 
   constructor(private buyerService : CustomerService, private route : Router) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   @Input()
@@ -42,18 +41,7 @@ export class SignupComponent implements OnInit {
     "adhar" : '',
     "password" : '' 
   }
-  // formSubmit() {
-  //   console.log(this.user);
-  //   if(this.user.username == '' || this.user.username == null){
-  //     //alert('User is required !');
-  //     this._snackBar.open('Username is required!', 'OK', {
-  //       duration: 3000,
-  //       verticalPosition: 'top',
-  //       horizontalPosition: 'right',
-  //     });
-  //     return;
-  //   }
-  //}
+
 public set! : string ;
 typeOfUser(val:string){
   if(val=="seller")
@@ -64,14 +52,31 @@ typeOfUser(val:string){
     this.set="buyer"
   }
 }
+errmsg : any;
 createAccount(){
+  if(this.set == null || this.set == ""){
+    this.errmsg = "select your Role!"
+  } 
+  if(this.accData.password == null || this.accData.password == ""){
+    this.errmsg = "password is required"
+  }
+  if(this.accData.email == null || this.accData.email == ""){
+    this.errmsg = "Email is required"
+  }
+  if(this.accData.lName == null || this.accData.lName == ""){
+    this.errmsg = "Last Name is required"
+  }
+  if(this.accData.fName == null || this.accData.fName == ""){
+    this.errmsg = "first Name is required"
+  }
   if(this.set=="buyer"){
-      this.buyerService.createBuyer(this.accData).subscribe(data=> this.route.navigate(['/list'])  )
+      this.buyerService.createBuyer(this.accData).subscribe(data=> this.route.navigate(['/login']),
+      error=> this.errmsg = "Email Id is already Registered"   )
   }
   else if(this.set=="seller")
   {
-    this.buyerService.createSeller(this.accData).subscribe(data=> this.route.navigate(['/login'])  )
-  
+    this.buyerService.createSeller(this.accData).subscribe(data=> this.route.navigate(['/login']),
+    error=> this.errmsg = "Email Id is already Registered" )
   }
 }
 }

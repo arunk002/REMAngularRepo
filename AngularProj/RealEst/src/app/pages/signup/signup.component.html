@@ -127,6 +127,7 @@
                             custmer No<span class="text-danger"> *</span></label> <input class="design" type="text"
                             id="aadhar" [(ngModel)]="accData.customerId" placeholder=""> </div>
                 </div>
+                <div class="text-danger">{{errmsg}}</div>
                 <div class="row justify-content-end">
                     <div class="form-group col-sm-6"> <button type="submit" (click)="createAccount()"
                             class="btn-block btn-primary">Create account
