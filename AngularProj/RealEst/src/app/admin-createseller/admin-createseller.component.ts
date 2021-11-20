@@ -29,8 +29,9 @@ errmsg : any;
     if(this.sellerData.password == null || this.sellerData.password == ""){
       this.errmsg = "password is required"
     }
-    if(this.sellerData.email == null || this.sellerData.email == ""){
-      this.errmsg = "Email is required"
+    if(!isEmail(this.sellerData.email)){
+      this.errmsg = "Email is Invalid"
+      throw new Error
     }
     if(this.sellerData.lName == null || this.sellerData.lName == ""){
       this.errmsg = "Last Name is required"
@@ -44,4 +45,9 @@ errmsg : any;
     );
   }
 
+}
+
+function isEmail(email : string) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
 }

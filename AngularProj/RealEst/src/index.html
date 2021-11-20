@@ -17,5 +17,26 @@
 </head>
 <body style="background-color:#F4F5F2;" class="mat-typography">
   <app-root></app-root>
+
+  <script>function validate() {
+    var element = document.getElementById('input-fieldd');
+    element.value = element.value.replace(/[^a-zA-Z]+/, '');
+  }
+  
+  function validate2() {
+    var element = document.getElementById('input-fielddd');
+    element.value = element.value.replace(/[^a-zA-Z]+/, '');
+  }
+
+  function validate3() {
+    var element = document.getElementById('input-prop');
+    element.value = element.value.replace(/[^a-zA-Z]+/, '');
+  }
+  
+  function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+  </script>
 </body>
 </html>

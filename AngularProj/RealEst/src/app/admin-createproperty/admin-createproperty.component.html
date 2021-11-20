@@ -13,16 +13,20 @@
                         class="form-control-label px-3">Property Type<span class="text-danger"> *</span></label>
                         <input type="text" id="fname" [(ngModel)]="propertyData.property_Type"
                             placeholder="Enter your property_Type" />
+                            <div class="text-danger">{{typemsg}}</div>
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex">
                         <label class="form-control-label px-3">Contact<span class="text-danger"> *</span></label>
-                        <input type="text" id="lname" [(ngModel)]="propertyData.contact" placeholder="Enter contact" />
+                        <input type="number" id="lname" [(ngModel)]="propertyData.contact" placeholder="Enter contact" />
+                        <div class="text-danger">{{propmsg}}</div>
+                        
                     </div>
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex">
                         <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
                         <input type="text" id="email" [(ngModel)]="sellerData.email" placeholder="" disabled />
+                        
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex">
                         <label class="form-control-label px-3">Seller fIrstname<span class="text-danger"> *</span></label>
@@ -33,6 +37,8 @@
                     <div class="form-group col-sm-6 flex-column d-flex">
                         <label class="form-control-label px-3">Price<span class="text-danger"> *</span></label>
                         <input type="number" id="pan" [(ngModel)]="propertyData.price" placeholder="" />
+                        <div class="text-danger">{{pricemsg}}</div>
+                        
                     </div>
                     <div class="form-group col-sm-6 flex-column d-flex">
                         <label class="form-control-label px-3">Status<span class="text-danger"> *</span></label>
@@ -54,12 +60,16 @@
                     <div class="form-group col-sm-4 flex-column d-flex">
                         <label class="form-control-label px-3">Place<span class="text-danger"> *</span></label>
                         <input type="text" id="pan" [(ngModel)]="propertyData.place" placeholder="" />
+                        <div class="text-danger">{{placemsg}}</div>
+                        
                     </div>
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-12 flex-column d-flex">
                         <label class="form-control-label px-3">Describe Your property<span class="text-danger"> *</span></label>
                         <input type="textarea" id="pan" [(ngModel)]="propertyData.description" placeholder="" />
+                        <div class="text-danger">{{descriptionmsg}}</div>
+                        
                     </div>
                    
                 </div>

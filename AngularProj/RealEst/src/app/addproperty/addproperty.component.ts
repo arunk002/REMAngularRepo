@@ -50,7 +50,39 @@ export class AddpropertyComponent implements OnInit {
     
   }
 
-  createProperty(){
+  propmsg : any = ""
+  typemsg : any = ""
+  pricemsg : any = ""
+  placemsg : any = ""
+  descriptionmsg : any = ""
+  createProperty(){    
+    this.propmsg = ""
+    this.typemsg = ""
+    this.pricemsg = ""
+    this.placemsg = ""
+    this.descriptionmsg = ""
+    if(this.propertyData.property_Type == "" || this.propertyData.property_Type == null){
+      this.typemsg = "Enter Valid property type"
+      throw new Error
+    }
+    if(this.propertyData.contact < 999999999){
+      this.propmsg = "Enter valid mobile number"
+      throw new Error
+    }
+    if(this.propertyData.price < 999){
+      this.pricemsg = "Enter valid price"
+      throw new Error
+    }
+    if(this.propertyData.place == "" || this.propertyData.place == null){
+      this.placemsg = "Enter valid place"
+      throw new Error
+    }if(this.propertyData.description == "" || this.propertyData.description == null){
+      this.descriptionmsg = "Describe your property"
+      throw new Error
+    }
+    
+    
+    
     this.propertyService.createProperty(this.propertyData).subscribe(data=> this.route.navigate(['/sellerlist']) )
   }
 

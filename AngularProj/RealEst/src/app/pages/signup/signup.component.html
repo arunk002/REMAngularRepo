@@ -97,32 +97,34 @@
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First
                             name<span class="text-danger"> *</span></label> <input class="design" type="text"
-                            id="fname i" [(ngModel)]="accData.fName" placeholder="Enter your first name"> </div>
+                            id="fname i" [(ngModel)]="accData.fName" id="input-fieldd" onkeyup="validate();" placeholder="Enter your first name"> </div>
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last
-                            name<span class="text-danger"> *</span></label> <input class="design" type="text" id="lname"
-                            [(ngModel)]="accData.lName" placeholder="Enter your last name"> </div>
+                            name<span class="text-danger"> *</span></label> <input class="design" type="text" 
+                            [(ngModel)]="accData.lName" id="input-fielddd" onkeyup="validate2();" placeholder="Enter your last name"> </div>
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Personal
                             email<span class="text-danger"> *</span></label> <input class="design" type="text"
-                            id="email" [(ngModel)]="accData.email" placeholder=""> </div>
+                            id="email"  [(ngModel)]="accData.email" placeholder=""> </div>
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone
-                            number<span class="text-danger"> *</span></label> <input class="design" type="text" id="mob"
+                            number<span class="text-danger"> *</span></label> <input class="design" type="number" oninput="javascript: if (this.value.length = this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" id="mob"
                             [(ngModel)]="accData.phoneNumber" placeholder=""> </div>
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">PAN
-                            Number<span class="text-danger"> *</span></label> <input class="design" type="text" id="pan"
+                            Number<span class="text-danger"> *</span></label> <input oninput="javascript: if (this.value.length = this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" class="design" type="text" id="pan"
                             [(ngModel)]="accData.pan" placeholder=""> </div>
                     <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Adhar
                             Number<span class="text-danger"> *</span></label> <input class="design" type="text"
-                            id="aadhar" [(ngModel)]="accData.adhar" placeholder=""> </div>
+                            id="aadhar" [(ngModel)]="accData.adhar" oninput="javascript: if (this.value.length = this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="12" placeholder=""> </div>
                 </div>
                 <div class="row justify-content-between text-left">
                     <div class="form-group col-sm-6 flex-column d-flex"> <label
                             class="form-control-label px-3">PAssword<span class="text-danger"> *</span></label> <input
-                            class="design" type="text" id="pan" title="8 character, Upper and Lower case" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="accData.password" placeholder=""> </div>
-                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter
+                            class="design" type="text" id="password" title="8 character, Upper and Lower case" required   [(ngModel)]="accData.password" placeholder="">
+                            <span style="color: red;" class="text-danger" id="result"></span>
+                        </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter
                             valid
                             custmer No<span class="text-danger"> *</span></label> <input class="design" type="text"
                             id="aadhar" [(ngModel)]="accData.customerId" placeholder=""> </div>
